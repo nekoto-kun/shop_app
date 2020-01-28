@@ -70,3 +70,12 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Averta
+      fonts:
+        - asset: assets/fonts/Averta.otf
+    - family: Metropolis
+      fonts:
+        - asset: assets/fonts/Metropolis-Regular.otf
+        - asset: assets/fonts/Metropolis-Bold.otf
+          weight: 700
