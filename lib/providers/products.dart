@@ -49,9 +49,9 @@ class Products with ChangeNotifier {
     return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
-  void addProduct(Product product) {
+  Future<void> addProduct(Product product) {
     const url = 'https://flutter-udemy-9d225.firebaseio.com/products.json';
-    http
+    return http
         .post(url,
             body: json.encode({
               'title': product.title,
@@ -72,6 +72,7 @@ class Products with ChangeNotifier {
       // _items.insert(0, newProduct); // at the start of the list
       notifyListeners();
     });
+
   }
 
   void updateProduct(String id, Product newProduct) {
