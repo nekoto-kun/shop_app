@@ -56,6 +56,9 @@ class Products with ChangeNotifier {
     try {
       final response = await http.get(url);
       final extracted = json.decode(response.body) as Map<String, dynamic>;
+      if (extracted == null) {
+        return;
+      }
       final List<Product> loadedProducts = [];
       extracted.forEach((prodId, prodData) {
         loadedProducts.add(Product(
