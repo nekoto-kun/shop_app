@@ -21,8 +21,9 @@ class ProductItem extends StatelessWidget {
             ProductDetailScreen.routeName,
             arguments: product.id,
           ),
-          child: Image.network(
-            product.imageUrl,
+          child: FadeInImage(
+            placeholder: AssetImage('/assets/images/product-placeholder.png'),
+            image: NetworkImage(product.imageUrl),
             fit: BoxFit.cover,
           ),
         ),
@@ -34,7 +35,8 @@ class ProductItem extends StatelessWidget {
                 product.isFavorite ? Icons.favorite : Icons.favorite_border,
               ),
               color: Theme.of(context).accentColor,
-              onPressed: () => product.toggleFavoriteStatus(auth.token, auth.userId),
+              onPressed: () =>
+                  product.toggleFavoriteStatus(auth.token, auth.userId),
             ),
           ),
           title: Text(
