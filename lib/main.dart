@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import './helpers/custom_route.dart';
+
 import './providers/products.dart';
 import './providers/cart.dart';
 import './providers/orders.dart';
@@ -47,11 +49,15 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<Auth>(
         builder: (ctx, auth, _) => MaterialApp(
-          title: 'MyShop',
+          title: 'NekoShop',
           theme: ThemeData(
             primarySwatch: Colors.indigo,
             accentColor: Colors.indigoAccent,
             fontFamily: 'Metropolis',
+            pageTransitionsTheme: PageTransitionsTheme(builders: {
+              TargetPlatform.android: CustomPageTransitionBuilder(),
+              TargetPlatform.iOS: CustomPageTransitionBuilder(),
+            },),
           ),
           home: auth.isAuth
               ? ProductsOverviewScreen()
